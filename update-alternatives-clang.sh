@@ -26,12 +26,16 @@ function register_clang_version {
         --slave   /usr/bin/llvm-rtdyld       llvm-rtdyld      /usr/bin/llvm-rtdyld-${version} \
         --slave   /usr/bin/llvm-size         llvm-size        /usr/bin/llvm-size-${version} \
         --slave   /usr/bin/llvm-stress       llvm-stress      /usr/bin/llvm-stress-${version} \
-        --slave   /usr/bin/llvm-symbolizer   llvm-symbolizer  /usr/bin/llvm-symbolizer-${version} \
         --slave   /usr/bin/llvm-tblgen       llvm-tblgen      /usr/bin/llvm-tblgen-${version}
 
     update-alternatives \
+        --install /usr/bin/llvm-symbolizer   llvm-symbolizer  /usr/bin/llvm-symbolizer-${version} ${priority}
+
+    update-alternatives \
+        --install /usr/bin/clang++           clang++          /usr/bin/clang++-${version} ${priority}
+
+    update-alternatives \
         --install /usr/bin/clang                 clang                 /usr/bin/clang-${version} ${priority} \
-        --slave   /usr/bin/clang++               clang++               /usr/bin/clang++-${version}  \
         --slave   /usr/bin/asan_symbolize        asan_symbolize        /usr/bin/asan_symbolize-${version} \
         --slave   /usr/bin/c-index-test          c-index-test          /usr/bin/c-index-test-${version} \
         --slave   /usr/bin/clang-check           clang-check           /usr/bin/clang-check-${version} \
